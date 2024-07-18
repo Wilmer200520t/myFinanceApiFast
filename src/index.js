@@ -1,7 +1,6 @@
 import express from "express";
 import mysql from "../db/index.js";
 import cors from "cors";
-import e from "express";
 
 const app = express();
 const port = 3000;
@@ -16,6 +15,7 @@ app.post("/sql/get", (req, res) => {
     if (err) {
       console.error("Error executing query:", err);
       res.json({ err });
+      res.status(500);
       return;
     }
     res.json(rows);
@@ -28,6 +28,7 @@ app.post("/sql", (req, res) => {
     if (err) {
       console.error("Error executing query:", err);
       res.json({ err });
+      res.status(500);
       return;
     }
     res.json({ id: result.insertId });
@@ -40,6 +41,7 @@ app.put("/sql", (req, res) => {
     if (err) {
       console.error("Error executing query:", err);
       res.json({ err });
+      res.status(500);
       return;
     }
 
@@ -54,6 +56,7 @@ app.delete("/sql", (req, res) => {
     if (err) {
       console.error("Error executing query:", err);
       res.json({ err });
+      res.status(500);
       return;
     }
 
