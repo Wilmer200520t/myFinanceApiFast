@@ -1,10 +1,12 @@
 import express from "express";
 import mysql from "../db/index.js";
+import cors from "cors";
 
 const app = express();
 const port = 3000;
 const db = mysql;
 app.use(express.json());
+app.use(cors());
 
 app.get("/sql", (req, res) => {
   const { query } = req.body;
