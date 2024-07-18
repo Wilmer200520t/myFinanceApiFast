@@ -8,7 +8,7 @@ const db = mysql;
 app.use(express.json());
 app.use(cors());
 
-app.get("/sql", (req, res) => {
+app.post("/sql/get", (req, res) => {
   const { query } = req.body;
 
   db.query(query, (err, rows) => {
